@@ -13,7 +13,6 @@
 </head>
 <body>
   <main class="page-shell">
-    <!-- LEFT: hero -->
     <section class="hero-card">
       <div class="hero-inner">
         <div class="badge-row">
@@ -91,7 +90,6 @@
       </div>
     </section>
 
-    <!-- RIGHT: crawler UI (search -> status -> results) -->
     <section class="app-shell" id="crawler-app">
       <header class="app-header">
         <div class="app-title-block">
@@ -104,142 +102,78 @@
         </div>
       </header>
 
-      <div class="crawler-layout">
-        <!-- SEARCH / FILTERS -->
-        <div class="crawler-top">
-          <div class="crawler-search">
-            <div class="search-row">
-              <div class="field-group">
-                <label class="field-label" for="keywordInput">Keywords</label>
-                <input id="keywordInput" type="text" class="field-input" placeholder="Python Developer, DevOps Intern, Game Developer" />
+      <div class="app-frame">
+        <div class="app-placeholder">
+          <div class="app-top-row">
+            <div class="app-col">
+              <div class="app-col-title">Config</div>
+              <div class="app-chip-row">
+                <span class="app-chip">CS Internship</span>
+                <span class="app-chip">Philadelphia, PA</span>
+                <span class="app-chip">Remote · Hybrid</span>
               </div>
-
-              <div class="field-group">
-                <label class="field-label" for="locationInput">Location</label>
-                <input id="locationInput" type="text" class="field-input" placeholder="Philadelphia, PA · Remote · New York, NY" />
+              <div class="app-chip-row">
+                <span class="app-chip">Python</span>
+                <span class="app-chip">Node.js</span>
+                <span class="app-chip">C++</span>
+                <span class="app-chip">Lua</span>
               </div>
-            </div>
-
-            <div class="search-row">
-              <div class="field-group">
-                <span class="field-label">Work type</span>
-                <div class="chip-toggle-row">
-                  <button class="chip-toggle chip-toggle--active" data-worktype="all">All</button>
-                  <button class="chip-toggle" data-worktype="remote">Remote</button>
-                  <button class="chip-toggle" data-worktype="hybrid">Hybrid</button>
-                  <button class="chip-toggle" data-worktype="onsite">On‑site</button>
-                </div>
-              </div>
-
-              <div class="field-group">
-                <span class="field-label">Job type</span>
-                <div class="chip-toggle-row">
-                  <button class="chip-toggle chip-toggle--active" data-jobtype="internship">Internship</button>
-                  <button class="chip-toggle" data-jobtype="entry">Entry-level</button>
-                  <button class="chip-toggle" data-jobtype="junior">Junior</button>
-                </div>
+              <div class="app-progress">
+                <div class="app-progress-fill"></div>
               </div>
             </div>
-
-            <div class="search-row">
-              <div class="field-group">
-                <span class="field-label">Skills</span>
-                <div class="skills-row">
-                  <label class="skill-pill">
-                    <input type="checkbox" value="Python" checked />
-                    <span>Python</span>
-                  </label>
-                  <label class="skill-pill">
-                    <input type="checkbox" value="JavaScript" checked />
-                    <span>JavaScript</span>
-                  </label>
-                  <label class="skill-pill">
-                    <input type="checkbox" value="Node.js" />
-                    <span>Node.js</span>
-                  </label>
-                  <label class="skill-pill">
-                    <input type="checkbox" value="C++" />
-                    <span>C++</span>
-                  </label>
-                  <label class="skill-pill">
-                    <input type="checkbox" value="Lua" />
-                    <span>Lua</span>
-                  </label>
-                  <label class="skill-pill">
-                    <input type="checkbox" value="SQL" />
-                    <span>SQL</span>
-                  </label>
-                </div>
+            <div class="app-col">
+              <div class="app-col-title">Sites</div>
+              <div class="app-chip-row">
+                <span class="app-chip">Indeed</span>
+                <span class="app-chip">LinkedIn</span>
+                <span class="app-chip">GitHub Jobs</span>
+                <span class="app-chip">We Work Remotely</span>
               </div>
-            </div>
-
-            <div class="search-actions">
-              <button id="startCrawlBtn" class="btn btn-primary">Start Crawl</button>
-              <button id="stopCrawlBtn" class="btn btn-ghost">Stop</button>
-              <button id="exportCsvBtn" class="btn btn-ghost">Export CSV</button>
+              <div class="app-chip-row">
+                <span class="app-chip">Stack Overflow</span>
+                <span class="app-chip">AngelList</span>
+              </div>
             </div>
           </div>
 
-          <!-- STATUS directly under search -->
-          <div class="crawler-status">
-            <div class="status-header-row">
-              <h2 class="status-title">Crawler Status</h2>
-              <span id="crawlerStateLabel" class="status-chip">Idle</span>
+          <div class="app-bottom">
+            <div class="app-tabs">
+              <span class="app-tab app-tab--active">All</span>
+              <span class="app-tab">Remote</span>
+              <span class="app-tab">Hybrid</span>
+              <span class="app-tab">On‑site</span>
             </div>
-            <div class="status-metrics">
-              <div class="status-metric">
-                <span class="status-label">Remote Jobs</span>
-                <span id="remoteCount" class="status-value">0</span>
-              </div>
-              <div class="status-metric">
-                <span class="status-label">Hybrid Jobs</span>
-                <span id="hybridCount" class="status-value">0</span>
-              </div>
-              <div class="status-metric">
-                <span class="status-label">On‑site Jobs</span>
-                <span id="onsiteCount" class="status-value">0</span>
-              </div>
-              <div class="status-metric status-metric--wide">
-                <span class="status-label">Last Updated</span>
-                <span id="lastUpdated" class="status-value">Never</span>
-              </div>
-            </div>
-            <div class="status-progress">
-              <div class="status-progress-bar">
-                <div id="statusProgressFill" class="status-progress-fill"></div>
-              </div>
-              <span id="statusProgressLabel" class="status-progress-label">0 / 0 jobs</span>
-            </div>
-          </div>
-        </div>
 
-        <!-- RESULTS under status -->
-        <div class="crawler-results">
-          <div class="results-header">
-            <div class="results-tabs">
-              <button class="results-tab results-tab--active" data-filter="all">All</button>
-              <button class="results-tab" data-filter="remote">Remote</button>
-              <button class="results-tab" data-filter="hybrid">Hybrid</button>
-              <button class="results-tab" data-filter="onsite">On‑site</button>
+            <div class="job-row">
+              <div class="job-main">
+                <div class="job-title">Python Developer Internship · 95% match</div>
+                <div class="job-meta">CloudNative Systems · Remote · LinkedIn</div>
+              </div>
+              <span class="job-badge">Apply</span>
             </div>
-            <div class="results-controls">
-              <input id="resultsSearchInput" class="results-search" type="text" placeholder="Search results…" />
-              <select id="resultsSortSelect" class="results-sort">
-                <option value="match">Sort by match</option>
-                <option value="date">Sort by date</option>
-                <option value="location">Sort by location</option>
-              </select>
-            </div>
-          </div>
 
-          <div id="jobsContainer" class="jobs-list">
-            <!-- job cards rendered by app.js -->
+            <div class="job-row">
+              <div class="job-main">
+                <div class="job-title">Game Systems Developer · 92% match</div>
+                <div class="job-meta">Aspiere Studios · Philadelphia, PA · On‑site</div>
+              </div>
+              <span class="job-badge">Apply</span>
+            </div>
+
+            <div class="job-row">
+              <div class="job-main">
+                <div class="job-title">Cloud Engineering Intern · 91% match</div>
+                <div class="job-meta">CloudNative Systems · New York, NY · Hybrid</div>
+              </div>
+              <span class="job-badge">Apply</span>
+            </div>
           </div>
         </div>
       </div>
 
       <p class="footer-note">
-        This is a static preview. Wire your real crawler logic into this space (or mount a JS app to the <code>.crawler-results</code> area) and redeploy via GitHub Pages.
+        This is a static preview. Wire your real crawler logic into this space (or mount a JS app to the <code>.app-frame</code> container) and redeploy via GitHub Pages.
       </p>
     </section>
   </main>
